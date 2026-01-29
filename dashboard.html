@@ -211,7 +211,8 @@
             } else {
                 try {
                     const userData = JSON.parse(user);
-                    document.getElementById('user-greeting').innerText = `Welcome, ${userData.name}`;
+                    const displayName = userData.name || "User";
+                    document.getElementById('user-greeting').innerText = `Welcome, ${displayName}`;
                 } catch (e) { }
             }
 

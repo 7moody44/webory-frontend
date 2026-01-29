@@ -16,6 +16,19 @@
             overflow: hidden;
         }
 
+        /* Utility for screen reader only (hides default checkbox) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
         /* Enhanced Floating Orbs */
         .orb {
             position: absolute;
@@ -77,7 +90,6 @@
             }
         }
 
-
         /* Glass Card */
         .glass-panel {
             background: rgba(15, 42, 68, 0.4);
@@ -91,13 +103,20 @@
             position: relative;
         }
 
+        /* Constrained Width for Inputs */
+        .form-content {
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
         .input-field {
             width: 100%;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 12px 16px 12px 45px;
-            /* Reduced vertical padding */
+            padding: 10px 16px 10px 45px;
+            /* Shorter vertical padding */
             color: white;
             transition: all 0.3s ease;
             font-size: 0.95rem;
@@ -125,7 +144,8 @@
 
         /* Split Layout Logic */
         .split-bg {
-            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+            background-image: url('public/auth-bg.png');
+            /* New premium image */
             background-size: cover;
             background-position: center;
         }
@@ -139,134 +159,132 @@
         .custom-checkbox input:checked+div svg {
             display: block;
         }
+
+        /* Button Shimmer Effect */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .btn-shimmer {
+            background: linear-gradient(110deg, #D4AF37 8%, #FCD34D 18%, #D4AF37 33%);
+            background-size: 200% 100%;
+            animation: 4s shimmer linear infinite;
+        }
     </style>
 </head>
 
-<body class="flex items-center justify-center min-h-screen relative">
+<body class="flex items-center justify-center min-h-screen relative overflow-hidden" onmousemove="moveOrbs(event)">
 
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+    <div class="orb orb-1" id="orb1"></div>
+    <div class="orb orb-2" id="orb2"></div>
+    <div class="orb orb-3" id="orb3"></div>
+
+    <!-- Fixed Header Logo for better placement -->
+    <a href="/"
+        class="absolute top-8 left-8 z-50 text-2xl font-bold tracking-tight text-white hover:text-[#D4AF37] transition-colors group">
+        We<span class="text-[#D4AF37]">bor</span><span
+            class="text-white group-hover:text-[#D4AF37] transition-colors">y</span>
+    </a>
 
     <div
-        class="w-full max-w-6xl h-[85vh] flex rounded-3xl overflow-hidden shadow-2xl mx-4 glass-panel animate-[fadeInUp_0.8s_ease-out_forwards]">
+        class="w-full max-w-5xl h-[80vh] flex rounded-3xl overflow-hidden shadow-2xl mx-4 glass-panel animate-[fadeInUp_0.8s_ease-out_forwards]">
 
         <!-- Left Side: Form -->
         <div class="w-full lg:w-1/2 p-8 sm:p-12 md:p-14 flex flex-col justify-center relative">
 
-            <a href="/"
-                class="absolute top-8 left-8 text-2xl font-bold tracking-tight text-white hover:text-[#D4AF37] transition-colors group">
-                We<span class="text-[#1D4ED8]">bor</span><span
-                    class="text-[#D4AF37] group-hover:text-white transition-colors">y</span>
-            </a>
-
-            <div class="mb-10 mt-8">
-                <h2 class="text-4xl font-bold text-white mb-2">Welcome Back</h2>
-                <p class="text-[#94A3B8]">Enter your details to access your dashboard.</p>
-            </div>
-
-            <form action="#login" method="POST" class="space-y-6">
-                <div class="input-group">
-                    <input type="email" name="email" id="email" required placeholder="Email Address"
-                        class="input-field placeholder-[#94A3B8]/50">
-                    <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                        </path>
-                    </svg>
+            <div class="form-content">
+                <div class="mb-8 text-center lg:text-left">
+                    <h2 class="text-3xl font-bold text-white mb-2">Welcome Back</h2>
+                    <!-- Changed text color from slate to white/gold as requested -->
+                    <p class="text-[white]/70">Enter your details to access your dashboard.</p>
                 </div>
 
-                <div class="input-group">
-                    <input type="password" name="password" id="password" required placeholder="Password"
-                        class="input-field placeholder-[#94A3B8]/50">
-                    <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
-                        </path>
-                    </svg>
+                <form action="#login" method="POST" class="space-y-5">
+                    <div class="input-group">
+                        <input type="email" name="email" id="email" required placeholder="Email Address"
+                            class="input-field placeholder-white/40">
+                        <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" name="password" id="password" required placeholder="Password"
+                            class="input-field placeholder-white/40">
+                        <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                            </path>
+                        </svg>
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center cursor-pointer custom-checkbox group relative">
+                            <!-- Ensure class sr-only hides the default checkbox -->
+                            <input type="checkbox" required class="sr-only">
+                            <div
+                                class="w-4 h-4 border border-white/30 rounded flex items-center justify-center transition-all duration-200 group-hover:border-[#D4AF37]">
+                                <svg class="w-3 h-3 text-[#0B1C2D] hidden fill-current pointer-events-none"
+                                    viewBox="0 0 20 20">
+                                    <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
+                                </svg>
+                            </div>
+                            <!-- Changed text to white/gold -->
+                            <span
+                                class="ml-3 text-sm text-white/80 group-hover:text-[#D4AF37] transition-colors select-none">Remember
+                                me</span>
+                        </label>
+                        <a href="#"
+                            class="text-sm font-medium text-[#D4AF37] hover:text-white transition-colors forgot-password-link">Forgot
+                            password?</a>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-3 rounded-xl btn-shimmer text-white font-semibold shadow-lg shadow-[#D4AF37]/20 hover:scale-[1.02] hover:shadow-[#D4AF37]/40 transition-all duration-300">
+                        Sign In
+                    </button>
+                </form>
+
+                <div class="mt-8 text-center text-sm text-white/60">
+                    Don't have an account?
+                    <a href="signup.html" class="font-semibold text-[#D4AF37] hover:text-white transition-colors">Sign
+                        up</a>
                 </div>
-
-                <div class="flex items-center justify-between">
-                    <label class="flex items-center cursor-pointer custom-checkbox group relative">
-                        <input type="checkbox" required class="sr-only">
-                        <div
-                            class="w-5 h-5 border border-[#94A3B8] rounded flex items-center justify-center transition-all duration-200 group-hover:border-[#D4AF37]">
-                            <svg class="w-3 h-3 text-[#0B1C2D] hidden fill-current pointer-events-none"
-                                viewBox="0 0 20 20">
-                                <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                            </svg>
-                        </div>
-                        <span
-                            class="ml-3 text-sm text-[#94A3B8] group-hover:text-white transition-colors select-none">Remember
-                            me</span>
-                    </label>
-                    <a href="#"
-                        class="text-sm font-medium text-[#D4AF37] hover:text-white transition-colors forgot-password-link">Forgot
-                        password?</a>
-                </div>
-
-                <button type="submit"
-                    class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-white font-semibold shadow-lg shadow-[#D4AF37]/20 hover:scale-[1.02] hover:shadow-[#D4AF37]/40 transition-all duration-300">
-                    Sign In
-                </button>
-            </form>
-
-            <div class="mt-8 text-center text-sm text-[#94A3B8]">
-                Don't have an account?
-                <a href="signup.html" class="font-semibold text-white hover:text-[#D4AF37] transition-colors">Sign
-                    up</a>
             </div>
-
-            <div class="mt-6 flex items-center gap-4 justify-center">
-                <div class="h-px bg-white/10 flex-1"></div>
-                <span class="text-xs text-[#94A3B8] uppercase tracking-wider">Or continue with</span>
-                <div class="h-px bg-white/10 flex-1"></div>
-            </div>
-
-            <div class="mt-4 grid grid-cols-2 gap-4">
-                <button type="button"
-                    class="flex items-center justify-center gap-2 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all text-white text-sm font-medium"
-                    onclick="alert('Redirecting to Google OAuth...')">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z" />
-                    </svg>
-                    Google
-                </button>
-                <button type="button"
-                    class="flex items-center justify-center gap-2 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all text-white text-sm font-medium"
-                    onclick="alert('Redirecting to GitHub OAuth...')">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path fill-rule="evenodd"
-                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    GitHub
-                </button>
-            </div>
+            <!-- Removed Google/GitHub buttons as requested -->
         </div>
 
         <!-- Right Side: Visual -->
         <div class="hidden lg:block w-1/2 relative split-bg p-12 flex flex-col justify-end text-white">
             <div class="absolute inset-0 bg-gradient-to-t from-[#0B1C2D] via-transparent to-transparent opacity-90">
             </div>
-            <div class="relative z-10">
-                <blockquote class="text-2xl font-light italic mb-6">
-                    "Webory transformed our digital presence. The attention to detail and security is unmatched."
-                </blockquote>
-                <div class="flex items-center gap-4">
-                    <div
-                        class="w-10 h-10 rounded-full bg-[#D4AF37] flex items-center justify-center text-[#0B1C2D] font-bold">
-                        JD</div>
-                    <div>
-                        <div class="font-semibold">John Doe</div>
-                        <div class="text-sm opacity-70">CEO, TechCorp</div>
-                    </div>
-                </div>
-            </div>
+            <!-- Removed text overlay inside image as requested - kept it clean -->
         </div>
     </div>
     <script src="js/auth.js"></script>
+    <script>
+        function moveOrbs(e) {
+            const orb1 = document.getElementById('orb1');
+            const orb2 = document.getElementById('orb2');
+            const orb3 = document.getElementById('orb3');
+
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            orb1.style.transform = `translate(${x * 30}px, ${y * 30}px)`;
+            orb2.style.transform = `translate(-${x * 30}px, -${y * 30}px)`;
+            // Orb 3 keeps its pulse animation but moves slightly
+            // We combine the translation from animation with mouse movement
+        }
+    </script>
 </body>
 
 </html>

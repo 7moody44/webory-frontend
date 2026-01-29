@@ -157,7 +157,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const data = await response.json();
                 if (response.ok) {
-                    localStorage.setItem('webory_user', JSON.stringify({ email, token: data.token }));
+                    // Backend returns { msg, userId }
+                    // We derive a display name from the email since backend doesn't send name
+                    const name = email.split('@')[0];
+                    localStorage.setItem('webory_user', JSON.stringify({
+                        email,
+                        id: data.userId,
+                        name: name.charAt(0).toUpperCase() + name.slice(1) // Capitalize first letter
+                    }));
                     alert("Login Successful!");
                     window.location.href = 'index.html';
                 } else {

@@ -16,6 +16,19 @@
             overflow: hidden;
         }
 
+        /* Utility for screen reader only (hides default checkbox) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
         /* Enhanced Floating Orbs */
         .orb {
             position: absolute;
@@ -93,13 +106,20 @@
             position: relative;
         }
 
+        /* Constrained form width */
+        .form-content {
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
         .input-field {
             width: 100%;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 12px 16px 12px 45px;
-            /* Reduced padding-top/bottom */
+            padding: 10px 16px 10px 45px;
+            /* Compact padding */
             color: white;
             transition: all 0.3s ease;
             font-size: 0.95rem;
@@ -126,7 +146,8 @@
         }
 
         .split-bg-signup {
-            background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop');
+            background-image: url('public/auth-bg.png');
+            /* New premium image */
             background-size: cover;
             background-position: center;
         }
@@ -140,102 +161,124 @@
         .custom-checkbox input:checked+div svg {
             display: block;
         }
+
+        /* Button Shimmer Effect */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .btn-shimmer {
+            background: linear-gradient(110deg, #D4AF37 8%, #FCD34D 18%, #D4AF37 33%);
+            background-size: 200% 100%;
+            animation: 4s shimmer linear infinite;
+        }
     </style>
 </head>
 
-<body class="flex items-center justify-center min-h-screen relative">
+<body class="flex items-center justify-center min-h-screen relative overflow-hidden" onmousemove="moveOrbs(event)">
 
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+    <div class="orb orb-1" id="orb1"></div>
+    <div class="orb orb-2" id="orb2"></div>
+    <div class="orb orb-3" id="orb3"></div>
+
+    <!-- Fixed Header Logo -->
+    <a href="/"
+        class="absolute top-8 left-8 z-50 text-2xl font-bold tracking-tight text-white hover:text-[#D4AF37] transition-colors group">
+        We<span class="text-[#D4AF37]">bor</span><span
+            class="text-white group-hover:text-[#D4AF37] transition-colors">y</span>
+    </a>
 
     <div
-        class="w-full max-w-6xl h-[90vh] flex flex-col-reverse lg:flex-row rounded-3xl overflow-hidden shadow-2xl mx-4 glass-panel animate-[fadeInUp_0.8s_ease-out_forwards]">
+        class="w-full max-w-5xl h-[85vh] flex flex-col-reverse lg:flex-row rounded-3xl overflow-hidden shadow-2xl mx-4 glass-panel animate-[fadeInUp_0.8s_ease-out_forwards]">
 
-        <!-- Left Side: Form (Swapped from Right) -->
+        <!-- Left Side: Form -->
         <div
             class="w-full lg:w-1/2 p-8 sm:p-12 md:p-14 flex flex-col justify-center relative overflow-y-auto custom-scrollbar">
-            <div class="lg:hidden mb-6">
-                <a href="/" class="text-2xl font-bold tracking-tight text-white group">
-                    We<span class="text-[#1D4ED8]">bor</span><span class="text-[#D4AF37]">y</span>
-                </a>
-            </div>
 
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold text-white mb-2">Create Account</h2>
-                <p class="text-[#94A3B8]">Start your journey with us today.</p>
-            </div>
-
-            <form action="#signup" method="POST" class="space-y-4">
-                <div class="input-group">
-                    <input type="text" name="name" id="name" required placeholder="Full Name"
-                        class="input-field placeholder-[#94A3B8]/50">
-                    <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                    </svg>
+            <div class="form-content">
+                <div class="mb-8 text-center lg:text-left">
+                    <h2 class="text-3xl font-bold text-white mb-2">Create Account</h2>
+                    <p class="text-[white]/70">Start your journey with us today.</p>
                 </div>
 
-                <div class="input-group">
-                    <input type="email" name="email" id="email" required placeholder="Email Address"
-                        class="input-field placeholder-[#94A3B8]/50">
-                    <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                        </path>
-                    </svg>
+                <form action="#signup" method="POST" class="space-y-4">
+                    <div class="input-group">
+                        <input type="text" name="name" id="name" required placeholder="Full Name"
+                            class="input-field placeholder-white/40">
+                        <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" name="email" id="email" required placeholder="Email Address"
+                            class="input-field placeholder-white/40">
+                        <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" name="password" id="password" required placeholder="Password"
+                            class="input-field placeholder-white/40">
+                        <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                            </path>
+                        </svg>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" name="confirm-password" id="confirm-password" required
+                            placeholder="Confirm Password" class="input-field placeholder-white/40">
+                        <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+
+                    <div class="flex items-start">
+                        <label class="flex items-center cursor-pointer custom-checkbox relative">
+                            <input id="terms" name="terms" type="checkbox" required class="sr-only">
+                            <div
+                                class="w-4 h-4 border border-[#D4AF37] rounded flex items-center justify-center transition-all duration-200 hover:border-white">
+                                <svg class="w-3 h-3 text-[#0B1C2D] hidden fill-current pointer-events-none"
+                                    viewBox="0 0 20 20">
+                                    <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
+                                </svg>
+                            </div>
+                            <span class="ml-3 text-sm text-[white]/80 font-light select-none">I agree to the <a href="#"
+                                    class="text-[#D4AF37] hover:underline">Terms</a> and <a href="#"
+                                    class="text-[#D4AF37] hover:underline">Privacy Policy</a></span>
+                        </label>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-3 rounded-xl btn-shimmer text-white font-semibold shadow-lg shadow-[#D4AF37]/20 hover:scale-[1.02] hover:shadow-[#D4AF37]/40 transition-all duration-300">
+                        Create Account
+                    </button>
+                </form>
+
+                <div class="mt-6 text-center text-sm text-white/60">
+                    Already have an account?
+                    <a href="login.html" class="font-semibold text-[#D4AF37] hover:text-white transition-colors">Sign
+                        in</a>
                 </div>
-
-                <div class="input-group">
-                    <input type="password" name="password" id="password" required placeholder="Password"
-                        class="input-field placeholder-[#94A3B8]/50">
-                    <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
-                        </path>
-                    </svg>
-                </div>
-
-                <div class="input-group">
-                    <input type="password" name="confirm-password" id="confirm-password" required
-                        placeholder="Confirm Password" class="input-field placeholder-[#94A3B8]/50">
-                    <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-
-                <div class="flex items-start">
-                    <label class="flex items-center cursor-pointer custom-checkbox relative">
-                        <input id="terms" name="terms" type="checkbox" required class="sr-only">
-                        <div
-                            class="w-5 h-5 border border-[#D4AF37] rounded flex items-center justify-center transition-all duration-200 hover:border-white">
-                            <svg class="w-3 h-3 text-[#0B1C2D] hidden fill-current pointer-events-none"
-                                viewBox="0 0 20 20">
-                                <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                            </svg>
-                        </div>
-                        <span class="ml-3 text-sm text-[#94A3B8] font-light select-none">I agree to the <a href="#"
-                                class="text-[#D4AF37] hover:underline">Terms</a> and <a href="#"
-                                class="text-[#D4AF37] hover:underline">Privacy Policy</a></span>
-                    </label>
-                </div>
-
-                <button type="submit"
-                    class="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-white font-semibold shadow-lg shadow-[#D4AF37]/20 hover:scale-[1.02] hover:shadow-[#D4AF37]/40 transition-all duration-300">
-                    Create Account
-                </button>
-            </form>
-
-            <div class="mt-6 text-center text-sm text-[#94A3B8]">
-                Already have an account?
-                <a href="login.html" class="font-semibold text-white hover:text-[#D4AF37] transition-colors">Sign in</a>
             </div>
         </div>
 
-        <!-- Right Side: Visual (Swapped from Left) -->
+        <!-- Right Side: Visual -->
         <div class="hidden lg:flex w-1/2 relative split-bg-signup p-12 flex-col justify-between text-white">
-            <div class="absolute inset-0 bg-gradient-to-b from-[#0B1C2D]/80 via-[#0B1C2D]/40 to-[#0B1C2D]/90"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0B1C2D]/80 via-transparent to-[#0B1C2D]/90"></div>
 
             <div class="relative z-10 flex justify-end">
                 <a href="/"
@@ -272,6 +315,21 @@
 
     </div>
     <script src="js/auth.js"></script>
+    <script>
+        function moveOrbs(e) {
+            const orb1 = document.getElementById('orb1');
+            const orb2 = document.getElementById('orb2');
+            const orb3 = document.getElementById('orb3');
+
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            orb1.style.transform = `translate(${x * 30}px, ${y * 30}px)`;
+            orb2.style.transform = `translate(-${x * 30}px, -${y * 30}px)`;
+            // Orb 3 keeps its pulse animation but moves slightly
+            orb3.style.transform = `translate(-50%, -50%) translate(${x * 10}px, ${y * 10}px)`;
+        }
+    </script>
 </body>
 
 </html>
