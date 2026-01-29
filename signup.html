@@ -7,143 +7,108 @@
     <title>Sign Up | Webory</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/custom.css">
 </head>
 
-<body class="flex items-center justify-center min-h-screen relative overflow-hidden signup-page">
+<body class="min-h-screen relative overflow-hidden signup-page" style="background: #0B1C2D;">
 
+    <!-- Animated Background Orbs -->
     <div class="orb orb-1" id="orb1"></div>
     <div class="orb orb-2" id="orb2"></div>
     <div class="orb orb-3" id="orb3"></div>
 
-    <!-- Fixed Header Logo -->
+    <!-- Full Background Image -->
+    <div class="fixed inset-0 z-0">
+        <img src="public/auth-bg.png" alt="" class="w-full h-full object-cover opacity-30">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0B1C2D]/80 via-[#0B1C2D]/60 to-[#0B1C2D]/90"></div>
+    </div>
+
+    <!-- Top Left Logo (Bigger & Better Position) -->
     <a href="/"
-        class="absolute top-8 left-10 z-50 text-4xl font-bold tracking-tight text-white hover:opacity-90 transition-opacity group font-outfit">
-        We<span class="text-[#000080]">bor</span><span class="text-[#D4AF37]">y</span>
+        class="absolute top-10 left-10 z-50 text-5xl font-bold tracking-tight hover:opacity-90 transition-opacity">
+        <span class="text-white">We</span><span class="text-[#000080]">bor</span><span class="text-[#D4AF37]">y</span>
     </a>
 
-    <!-- Main Card: Centered, Split Layout -->
-    <div
-        class="relative w-full max-w-[1200px] h-[85vh] m-auto flex rounded-[2rem] overflow-hidden shadow-2xl glass-panel animate-[fadeInUp_0.8s_ease-out_forwards]">
+    <!-- Centered Signup Card -->
+    <div class="relative z-10 flex items-center justify-center min-h-screen px-6 py-12">
+        <div class="w-full max-w-md glass-panel rounded-3xl p-10 shadow-2xl animate-[fadeInUp_0.8s_ease-out_forwards]">
 
-        <!-- Left Side: Form (Smaller width, 40%) -->
-        <div
-            class="w-full lg:w-[40%] p-10 sm:p-14 flex flex-col justify-center relative bg-[#0B1C2D]/60 backdrop-blur-md overflow-y-auto custom-scrollbar">
+            <div class="mb-8 text-center">
+                <h2 class="text-4xl font-bold text-white mb-3">Create Account</h2>
+                <p class="text-white/60 text-lg">Join the future of web development</p>
+            </div>
 
-            <div class="w-full max-w-sm mx-auto">
-                <div class="mb-8">
-                    <h2 class="text-3xl font-bold text-white mb-2">Create Account</h2>
-                    <p class="text-white/60">Start your journey with us today.</p>
+            <form action="#signup" id="signupForm" class="flex flex-col gap-5">
+                <div class="input-group">
+                    <input type="text" name="name" id="name" required placeholder="Full Name"
+                        class="input-field placeholder-white/30">
+                    <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
                 </div>
 
-                <form action="#signup" id="signupForm" class="flex flex-col gap-5">
-                    <div class="input-group">
-                        <input type="text" name="name" id="name" required placeholder="Full Name"
-                            class="input-field placeholder-white/30">
-                        <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                        </svg>
-                    </div>
-
-                    <div class="input-group">
-                        <input type="email" name="email" id="email" required placeholder="Email Address"
-                            class="input-field placeholder-white/30">
-                        <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                            </path>
-                        </svg>
-                    </div>
-
-                    <div class="input-group">
-                        <input type="password" name="password" id="password" required placeholder="Password"
-                            class="input-field placeholder-white/30">
-                        <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
-                            </path>
-                        </svg>
-                    </div>
-
-                    <div class="input-group">
-                        <input type="password" name="confirm-password" id="confirm-password" required
-                            placeholder="Confirm Password" class="input-field placeholder-white/30">
-                        <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-
-                    <div class="flex items-start mt-2">
-                        <label class="flex items-center cursor-pointer custom-checkbox relative">
-                            <input id="terms" name="terms" type="checkbox" required class="sr-only">
-                            <div
-                                class="w-5 h-5 border border-[#D4AF37] rounded flex items-center justify-center transition-all duration-200 hover:border-white">
-                                <svg class="w-3.5 h-3.5 text-[#0B1C2D] hidden fill-current pointer-events-none"
-                                    viewBox="0 0 20 20">
-                                    <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                                </svg>
-                            </div>
-                            <span class="ml-3 text-sm text-white/70 font-light select-none">I agree to the <a href="#"
-                                    class="text-[#D4AF37] hover:underline">Terms</a> and <a href="#"
-                                    class="text-[#D4AF37] hover:underline">Privacy Policy</a></span>
-                        </label>
-                    </div>
-
-                    <button type="submit"
-                        class="w-full py-4 rounded-xl btn-shimmer text-[#0B1C2D] font-bold text-lg shadow-lg shadow-[#D4AF37]/20 hover:scale-[1.01] transition-transform duration-300 mt-2">
-                        Create Account
-                    </button>
-                </form>
-
-                <div class="mt-8 text-center text-white/50">
-                    Already have an account?
-                    <a href="login.html" class="font-bold text-[#D4AF37] hover:underline transition-all">Sign in</a>
+                <div class="input-group">
+                    <input type="email" name="email" id="email" required placeholder="Email Address"
+                        class="input-field placeholder-white/30">
+                    <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>
                 </div>
+
+                <div class="input-group">
+                    <input type="password" name="password" id="password" required placeholder="Password"
+                        class="input-field placeholder-white/30">
+                    <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                        </path>
+                    </svg>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" name="confirm-password" id="confirm-password" required
+                        placeholder="Confirm Password" class="input-field placeholder-white/30">
+                    <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+
+                <div class="flex items-start mt-2">
+                    <label class="flex items-center cursor-pointer custom-checkbox relative">
+                        <input id="terms" name="terms" type="checkbox" required class="sr-only">
+                        <div
+                            class="w-5 h-5 border border-[#D4AF37] rounded flex items-center justify-center transition-all duration-200 hover:border-white">
+                            <svg class="w-3.5 h-3.5 text-[#0B1C2D] hidden fill-current pointer-events-none"
+                                viewBox="0 0 20 20">
+                                <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
+                            </svg>
+                        </div>
+                        <span class="ml-3 text-sm text-white/70 font-light select-none">I agree to the <a href="#"
+                                class="text-[#D4AF37] hover:underline">Terms</a> and <a href="#"
+                                class="text-[#D4AF37] hover:underline">Privacy Policy</a></span>
+                    </label>
+                </div>
+
+                <button type="submit"
+                    class="w-full py-4 rounded-xl btn-shimmer text-[#0B1C2D] font-bold text-lg shadow-lg shadow-[#D4AF37]/20 hover:scale-[1.02] transition-transform duration-300 mt-4">
+                    Create Account
+                </button>
+            </form>
+
+            <div class="mt-8 text-center text-white/50">
+                Already have an account?
+                <a href="login.html" class="font-bold text-[#D4AF37] hover:underline transition-all">Sign in</a>
             </div>
         </div>
-
-        <!-- Right Side: Visual (Bigger width: 60%) -->
-        <div class="hidden lg:block w-[60%] relative split-bg-signup h-full">
-            <div class="absolute inset-0 bg-[#0B1C2D]/20 mix-blend-multiply"></div>
-
-            <div class="relative z-10 flex justify-end p-12">
-                <a href="/"
-                    class="text-4xl font-bold tracking-tight text-white hover:opacity-90 transition-opacity group font-outfit">
-                    We<span class="text-[#1D4ED8]">bor</span><span class="text-[#D4AF37]">y</span>
-                </a>
-            </div>
-
-            <div class="relative z-10 p-12 pt-0">
-                <h2 class="text-3xl font-bold mb-4">Join the Future of Web Development</h2>
-                <ul class="space-y-4">
-                    <li class="flex items-center text-[#CBD5E1]">
-                        <div
-                            class="w-6 h-6 rounded-full bg-[#D4AF37]/20 flex items-center justify-center mr-3 text-[#D4AF37]">
-                            ✓</div>
-                        Access top-tier developer tools
-                    </li>
-                    <li class="flex items-center text-[#CBD5E1]">
-                        <div
-                            class="w-6 h-6 rounded-full bg-[#D4AF37]/20 flex items-center justify-center mr-3 text-[#D4AF37]">
-                            ✓</div>
-                        Secure, cloud-based project management
-                    </li>
-                    <li class="flex items-center text-[#CBD5E1]">
-                        <div
-                            class="w-6 h-6 rounded-full bg-[#D4AF37]/20 flex items-center justify-center mr-3 text-[#D4AF37]">
-                            ✓</div>
-                        24/7 Expert Support
-                    </li>
-                </ul>
-            </div>
-        </div>
-
     </div>
+
     <script src="js/auth.js"></script>
     <script src="js/ui.js"></script>
 </body>
