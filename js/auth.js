@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         name: name.charAt(0).toUpperCase() + name.slice(1) // Capitalize first letter
                     }));
                     alert("Login Successful!");
-                    window.location.href = 'index.html';
+                    window.location.href = 'dashboard.html';
                 } else {
                     alert(data.message || "Invalid credentials");
                     btn.innerText = "Sign In";

@@ -9,206 +9,39 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <style>
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #0B1C2D;
-            overflow: hidden;
-        }
-
-        /* Utility for screen reader only (hides default checkbox) */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-
-        /* Enhanced Floating Orbs */
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.5;
-            animation: float 20s infinite ease-in-out;
-            z-index: -1;
-        }
-
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, #1D4ED8 0%, rgba(29, 78, 216, 0) 70%);
-            top: -100px;
-            left: -100px;
-        }
-
-        .orb-2 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, #D4AF37 0%, rgba(212, 175, 55, 0) 70%);
-            bottom: -50px;
-            right: -50px;
-            animation-delay: -5s;
-        }
-
-        .orb-3 {
-            width: 150px;
-            height: 150px;
-            background: #ffffff;
-            opacity: 0.1;
-            top: 20%;
-            right: 40%;
-            animation: pulse-move 25s infinite alternate;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translate(0, 0);
-            }
-
-            50% {
-                transform: translate(30px, 50px);
-            }
-        }
-
-        @keyframes pulse-move {
-            0% {
-                transform: translate(0, 0) scale(1);
-                opacity: 0.05;
-            }
-
-            100% {
-                transform: translate(-50px, 50px) scale(1.5);
-                opacity: 0.15;
-            }
-        }
-
-        /* Glass Card */
-        .glass-panel {
-            background: rgba(15, 42, 68, 0.4);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Input Animation */
-        .input-group {
-            position: relative;
-        }
-
-        /* Constrained Width for Inputs */
-        .form-content {
-            width: 100%;
-            max-width: 380px;
-            margin: 0 auto;
-        }
-
-        .input-field {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 10px 16px 10px 45px;
-            /* Shorter vertical padding */
-            color: white;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .input-field:focus {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: #D4AF37;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
-        }
-
-        .input-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #94A3B8;
-            transition: color 0.3s ease;
-        }
-
-        .input-field:focus+.input-icon {
-            color: #D4AF37;
-        }
-
-        /* Split Layout Logic */
-        .split-bg {
-            background-image: url('public/auth-bg.png');
-            /* New premium image */
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Custom Checkbox Animation */
-        .custom-checkbox input:checked+div {
-            background-color: #D4AF37;
-            border-color: #D4AF37;
-        }
-
-        .custom-checkbox input:checked+div svg {
-            display: block;
-        }
-
-        /* Button Shimmer Effect */
-        @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
-
-            100% {
-                background-position: 200% 0;
-            }
-        }
-
-        .btn-shimmer {
-            background: linear-gradient(110deg, #D4AF37 8%, #FCD34D 18%, #D4AF37 33%);
-            background-size: 200% 100%;
-            animation: 4s shimmer linear infinite;
-        }
-    </style>
+    <link rel="stylesheet" href="css/custom.css">
 </head>
 
-<body class="flex items-center justify-center min-h-screen relative overflow-hidden" onmousemove="moveOrbs(event)">
+<body class="flex items-center justify-center min-h-screen relative overflow-hidden login-page">
 
     <div class="orb orb-1" id="orb1"></div>
     <div class="orb orb-2" id="orb2"></div>
     <div class="orb orb-3" id="orb3"></div>
 
-    <!-- Fixed Header Logo for better placement -->
+    <!-- Fixed Header Logo -->
     <a href="/"
-        class="absolute top-8 left-8 z-50 text-2xl font-bold tracking-tight text-white hover:text-[#D4AF37] transition-colors group">
-        We<span class="text-[#D4AF37]">bor</span><span
-            class="text-white group-hover:text-[#D4AF37] transition-colors">y</span>
+        class="absolute top-8 left-10 z-50 text-4xl font-bold tracking-tight text-white hover:opacity-90 transition-opacity group font-outfit">
+        We<span class="text-[#000080]">bor</span><span class="text-[#D4AF37]">y</span>
     </a>
 
+    <!-- Main Card: Centered, Split Layout -->
     <div
-        class="w-full max-w-5xl h-[80vh] flex rounded-3xl overflow-hidden shadow-2xl mx-4 glass-panel animate-[fadeInUp_0.8s_ease-out_forwards]">
+        class="relative w-full max-w-[1200px] h-[85vh] m-auto flex rounded-[2rem] overflow-hidden shadow-2xl glass-panel animate-[fadeInUp_0.8s_ease-out_forwards]">
 
-        <!-- Left Side: Form -->
-        <div class="w-full lg:w-1/2 p-8 sm:p-12 md:p-14 flex flex-col justify-center relative">
+        <!-- Left Side: Form (Smaller width, 40%) -->
+        <div
+            class="w-full lg:w-[40%] p-10 sm:p-14 flex flex-col justify-center relative bg-[#0B1C2D]/60 backdrop-blur-md">
 
-            <div class="form-content">
-                <div class="mb-8 text-center lg:text-left">
-                    <h2 class="text-3xl font-bold text-white mb-2">Welcome Back</h2>
-                    <!-- Changed text color from slate to white/gold as requested -->
-                    <p class="text-[white]/70">Enter your details to access your dashboard.</p>
+            <div class="w-full max-w-sm mx-auto">
+                <div class="mb-10">
+                    <h2 class="text-4xl font-bold text-white mb-3">Welcome Back</h2>
+                    <p class="text-white/60 text-lg">Enter your details to access your dashboard.</p>
                 </div>
 
-                <form action="#login" method="POST" class="space-y-5">
+                <form action="#login" id="loginForm" class="flex flex-col gap-6">
                     <div class="input-group">
                         <input type="email" name="email" id="email" required placeholder="Email Address"
-                            class="input-field placeholder-white/40">
+                            class="input-field placeholder-white/30">
                         <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
@@ -218,7 +51,7 @@
 
                     <div class="input-group">
                         <input type="password" name="password" id="password" required placeholder="Password"
-                            class="input-field placeholder-white/40">
+                            class="input-field placeholder-white/30">
                         <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
@@ -226,65 +59,45 @@
                         </svg>
                     </div>
 
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between mt-2">
                         <label class="flex items-center cursor-pointer custom-checkbox group relative">
-                            <!-- Ensure class sr-only hides the default checkbox -->
-                            <input type="checkbox" required class="sr-only">
+                            <input type="checkbox" class="sr-only">
                             <div
-                                class="w-4 h-4 border border-white/30 rounded flex items-center justify-center transition-all duration-200 group-hover:border-[#D4AF37]">
-                                <svg class="w-3 h-3 text-[#0B1C2D] hidden fill-current pointer-events-none"
+                                class="w-5 h-5 border border-white/20 rounded-md flex items-center justify-center transition-all duration-200 group-hover:border-[#D4AF37]">
+                                <svg class="w-3.5 h-3.5 text-[#0B1C2D] hidden fill-current pointer-events-none"
                                     viewBox="0 0 20 20">
                                     <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
                                 </svg>
                             </div>
-                            <!-- Changed text to white/gold -->
                             <span
-                                class="ml-3 text-sm text-white/80 group-hover:text-[#D4AF37] transition-colors select-none">Remember
+                                class="ml-3 text-sm text-white/70 group-hover:text-[#D4AF37] transition-colors select-none">Remember
                                 me</span>
                         </label>
                         <a href="#"
-                            class="text-sm font-medium text-[#D4AF37] hover:text-white transition-colors forgot-password-link">Forgot
+                            class="text-sm font-medium text-[#D4AF37] hover:text-[#FCD34D] transition-colors">Forgot
                             password?</a>
                     </div>
 
                     <button type="submit"
-                        class="w-full py-3 rounded-xl btn-shimmer text-white font-semibold shadow-lg shadow-[#D4AF37]/20 hover:scale-[1.02] hover:shadow-[#D4AF37]/40 transition-all duration-300">
+                        class="w-full py-4 rounded-xl btn-shimmer text-[#0B1C2D] font-bold text-lg shadow-lg shadow-[#D4AF37]/20 hover:scale-[1.01] transition-transform duration-300 mt-2">
                         Sign In
                     </button>
                 </form>
 
-                <div class="mt-8 text-center text-sm text-white/60">
+                <div class="mt-10 text-center text-white/50">
                     Don't have an account?
-                    <a href="signup.html" class="font-semibold text-[#D4AF37] hover:text-white transition-colors">Sign
-                        up</a>
+                    <a href="signup.html" class="font-bold text-[#D4AF37] hover:underline transition-all">Sign up</a>
                 </div>
             </div>
-            <!-- Removed Google/GitHub buttons as requested -->
         </div>
 
-        <!-- Right Side: Visual -->
-        <div class="hidden lg:block w-1/2 relative split-bg p-12 flex flex-col justify-end text-white">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0B1C2D] via-transparent to-transparent opacity-90">
-            </div>
-            <!-- Removed text overlay inside image as requested - kept it clean -->
+        <!-- Right Side: Visual (Bigger width: 60%) -->
+        <div class="hidden lg:block w-[60%] relative split-bg h-full">
+            <div class="absolute inset-0 bg-[#0B1C2D]/20 mix-blend-multiply"></div>
         </div>
     </div>
     <script src="js/auth.js"></script>
-    <script>
-        function moveOrbs(e) {
-            const orb1 = document.getElementById('orb1');
-            const orb2 = document.getElementById('orb2');
-            const orb3 = document.getElementById('orb3');
-
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-
-            orb1.style.transform = `translate(${x * 30}px, ${y * 30}px)`;
-            orb2.style.transform = `translate(-${x * 30}px, -${y * 30}px)`;
-            // Orb 3 keeps its pulse animation but moves slightly
-            // We combine the translation from animation with mouse movement
-        }
-    </script>
+    <script src="js/ui.js"></script>
 </body>
 
 </html>

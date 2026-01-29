@@ -14,51 +14,7 @@
     <script type="module" async
         src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fwebory2853back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.16"></script>
     <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2"></script>
-    <style>
-        /* Custom Gold Overrides for when tailwind build is not run */
-        .from-\[\#D4AF37\] {
-            --tw-gradient-from: #D4AF37 !important;
-            --tw-gradient-to: rgb(212 175 55 / 0) !important;
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-        }
-
-        .to-\[\#B8860B\] {
-            --tw-gradient-to: #B8860B !important;
-        }
-
-        .bg-\[\#D4AF37\] {
-            background-color: #D4AF37 !important;
-        }
-
-        .text-\[\#D4AF37\] {
-            color: #D4AF37 !important;
-        }
-
-        .hover\:bg-\[\#B8860B\]:hover {
-            background-color: #B8860B !important;
-        }
-
-        .hover\:text-\[\#D4AF37\]:hover {
-            color: #D4AF37 !important;
-        }
-
-        .bg-\[\#D4AF37\]\/10 {
-            background-color: rgba(212, 175, 55, 0.1) !important;
-        }
-
-        .sha w-\[\#D4AF37\]\/20 {
-            --tw-shadow-color: rgba(212, 175, 55, 0.2) !important;
-            --tw-shadow: var(--tw-shadow-colored) !important;
-        }
-
-        .hover\:shadow-\[0_20px_50px_rgba\(212\,175\,55\,0\.15\)\]:hover {
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15) !important;
-        }
-
-        .text-\[\#1D4ED8\] {
-            color: #1D4ED8 !important;
-        }
-    </style>
+    <link rel="stylesheet" href="css/custom.css">
 </head>
 
 <body class="min-h-screen antialiased overflow-x-hidden text-white bg-[#0B1C2D]">
@@ -494,7 +450,6 @@
             </div>
         </section>
 
-        <!-- Pricing Section -->
         <!-- Testimonials Section -->
         <section id="testimonials" class="z-20 border-t border-white/10 relative">
             <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-16">
@@ -628,9 +583,77 @@
             </div>
         </section>
 
-        <!-- Final CTA Section -->
         <section id="contact" class="z-20 border-t border-white/10 relative">
-            <div class="max-w-4xl mx-auto px-6 lg:px-8 pt-20 pb-20 text-center">
+            <!-- FAQ Section Inserted Before Contact -->
+            <div class="max-w-3xl mx-auto px-6 lg:px-8 pt-16 pb-16">
+                <div class="text-center mb-12 animate-on-scroll" style="animation: fadeSlideIn 1s ease-out 0.1s both;">
+                    <h2 class="text-3xl font-bold tracking-tight">Frequently Asked Questions</h2>
+                </div>
+                <div class="space-y-4 animate-on-scroll" style="animation: fadeSlideIn 1s ease-out 0.3s both;">
+                    <!-- FAQ Item 1 -->
+                    <div class="border border-white/10 rounded-xl bg-[#0F2A44]/30 overflow-hidden">
+                        <details class="group">
+                            <summary
+                                class="flex justify-between items-center font-medium cursor-pointer list-none p-4 hover:bg-white/5 transition-colors">
+                                <span>How long does a typical project take?</span>
+                                <span class="transition group-open:rotate-180">
+                                    <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                        <path d="M6 9l6 6 6-6"></path>
+                                    </svg>
+                                </span>
+                            </summary>
+                            <div class="text-[#CBD5E1] p-4 pt-0 text-sm leading-relaxed">
+                                Most standard websites are completed within 7-14 days. More complex web applications may
+                                take 3-6 weeks depending on requirements.
+                            </div>
+                        </details>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="border border-white/10 rounded-xl bg-[#0F2A44]/30 overflow-hidden">
+                        <details class="group">
+                            <summary
+                                class="flex justify-between items-center font-medium cursor-pointer list-none p-4 hover:bg-white/5 transition-colors">
+                                <span>Do you offer ongoing maintenance?</span>
+                                <span class="transition group-open:rotate-180">
+                                    <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                        <path d="M6 9l6 6 6-6"></path>
+                                    </svg>
+                                </span>
+                            </summary>
+                            <div class="text-[#CBD5E1] p-4 pt-0 text-sm leading-relaxed">
+                                Yes! We offer monthly maintenance packages that include hosting, security updates, and
+                                content changes so you never have to worry about your site being down.
+                            </div>
+                        </details>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="border border-white/10 rounded-xl bg-[#0F2A44]/30 overflow-hidden">
+                        <details class="group">
+                            <summary
+                                class="flex justify-between items-center font-medium cursor-pointer list-none p-4 hover:bg-white/5 transition-colors">
+                                <span>Can you fix my existing broken website?</span>
+                                <span class="transition group-open:rotate-180">
+                                    <svg fill="none" height="24" shape-rendering="geometricPrecision"
+                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="1.5" viewBox="0 0 24 24" width="24">
+                                        <path d="M6 9l6 6 6-6"></path>
+                                    </svg>
+                                </span>
+                            </summary>
+                            <div class="text-[#CBD5E1] p-4 pt-0 text-sm leading-relaxed">
+                                Absolutely. We specialize in debugging and fixing issues that other developers might
+                                have left behind. We can audit your site and provide a fix within 48 hours.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto px-6 lg:px-8 pt-10 pb-20 text-center">
                 <div class="animate-on-scroll" style="animation: fadeSlideIn 1s ease-out 0.1s both;">
                     <h2 class="text-4xl sm:text-6xl font-bold tracking-tight mb-6">
                         Ready to Transform Your Website?
@@ -705,87 +728,8 @@
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        (function () {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileCloseButton = document.getElementById('mobile-close-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('menu-icon');
-            const closeIcon = document.getElementById('close-icon');
-            const menuText = document.getElementById('menu-text');
-            let isMenuOpen = false;
-
-            function toggleMenu() {
-                isMenuOpen = !isMenuOpen;
-                if (isMenuOpen) {
-                    mobileMenu.classList.remove('opacity-0', 'invisible');
-                    mobileMenu.classList.add('opacity-100', 'visible');
-                    menuIcon.classList.add('hidden');
-                    closeIcon.classList.remove('hidden');
-                    menuText.textContent = 'Close';
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    mobileMenu.classList.remove('opacity-100', 'visible');
-                    mobileMenu.classList.add('opacity-0', 'invisible');
-                    menuIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
-                    menuText.textContent = 'Menu';
-                    document.body.style.overflow = '';
-                }
-            }
-
-            mobileMenuButton.addEventListener('click', toggleMenu);
-            mobileCloseButton.addEventListener('click', toggleMenu);
-
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (isMenuOpen) toggleMenu();
-                });
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && isMenuOpen) toggleMenu();
-            });
-
-            mobileMenu.addEventListener('click', (e) => {
-                if (e.target === mobileMenu && isMenuOpen) toggleMenu();
-            });
-        })();
-
-        // Intersection Observer for scroll animations
-        (function () {
-            const style = document.createElement('style');
-            style.textContent = `
-                .animate-on-scroll { animation-play-state: paused !important; }
-                .animate-on-scroll.animate { animation-play-state: running !important; }
-            `;
-            document.head.appendChild(style);
-
-            const once = true;
-
-            if (!window.__inViewIO) {
-                window.__inViewIO = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('animate');
-                            if (once) window.__inViewIO.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
-            }
-
-            window.initInViewAnimations = function (selector = '.animate-on-scroll') {
-                document.querySelectorAll(selector).forEach((el) => {
-                    window.__inViewIO.observe(el);
-                });
-            };
-
-            document.addEventListener('DOMContentLoaded', () => initInViewAnimations());
-        })();
-    </script>
     <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
     <script id="dhws-dataInjector" src="/public/dhws-data-injector.js"></script>
 </body>
 

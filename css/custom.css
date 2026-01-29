@@ -1,0 +1,234 @@
+/* =========================================
+   1. Global Theme Overrides (Gold & Navy)
+   ========================================= */
+
+/* Tailwind Custom Gold Colors (for when build is skipped) */
+.from-\[\#D4AF37\] {
+    --tw-gradient-from: #D4AF37 !important;
+    --tw-gradient-to: rgb(212 175 55 / 0) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+.to-\[\#B8860B\] {
+    --tw-gradient-to: #B8860B !important;
+}
+
+.bg-\[\#D4AF37\] {
+    background-color: #D4AF37 !important;
+}
+
+.text-\[\#D4AF37\] {
+    color: #D4AF37 !important;
+}
+
+.hover\:bg-\[\#B8860B\]:hover {
+    background-color: #B8860B !important;
+}
+
+.hover\:text-\[\#D4AF37\]:hover {
+    color: #D4AF37 !important;
+}
+
+.bg-\[\#D4AF37\]\/10 {
+    background-color: rgba(212, 175, 55, 0.1) !important;
+}
+
+.shadow-\[\#D4AF37\]\/20 {
+    --tw-shadow-color: rgba(212, 175, 55, 0.2) !important;
+    --tw-shadow: var(--tw-shadow-colored) !important;
+}
+
+.hover\:shadow-\[0_20px_50px_rgba\(212\,175\,55\,0\.15\)\]:hover {
+    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15) !important;
+}
+
+.text-\[\#1D4ED8\] {
+    color: #1D4ED8 !important; /* Standard Tailwind Blue override if needed */
+}
+
+/* =========================================
+   2. Auth Page Specifics (Orbs, Glass, Forms)
+   ========================================= */
+
+/* Utility for screen reader only (hides default checkbox) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Enhanced Floating Orbs */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: float 20s infinite ease-in-out;
+    z-index: -1;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #1D4ED8 0%, rgba(29, 78, 216, 0) 70%);
+    top: -100px;
+    left: -100px;
+}
+
+.orb-2 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #D4AF37 0%, rgba(212, 175, 55, 0) 70%);
+    bottom: -50px;
+    right: -50px;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 150px; /* Default for Login */
+    height: 150px;
+    background: #ffffff;
+    opacity: 0.1;
+    top: 20%;
+    right: 40%;
+    animation: pulse-move 25s infinite alternate;
+}
+
+/* Signup page has a slightly different orb-3 */
+body.signup-page .orb-3 {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 15s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, 50px); }
+}
+
+@keyframes pulse-move {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.05; }
+    100% { transform: translate(-50px, 50px) scale(1.5); opacity: 0.15; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.2; }
+}
+
+/* Glass Card */
+.glass-panel {
+    background: rgba(15, 42, 68, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Input Styles */
+.input-group {
+    position: relative;
+}
+
+.form-content {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.input-field {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 16px 10px 45px;
+    color: white;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.input-field:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #D4AF37;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94A3B8;
+    transition: color 0.3s ease;
+}
+
+.input-field:focus + .input-icon {
+    color: #D4AF37;
+}
+
+/* Background Images for Auth Split Layout */
+.split-bg {
+    background-image: url('../public/auth-bg.png'); /* Adjusted path relative to css folder */
+    background-size: cover;
+    background-position: center;
+}
+
+.split-bg-signup {
+    background-image: url('../public/auth-bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Custom Checkbox */
+.custom-checkbox input:checked + div {
+    background-color: #D4AF37;
+    border-color: #D4AF37;
+}
+
+.custom-checkbox input:checked + div svg {
+    display: block;
+}
+
+/* Button Shimmer Effect */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.btn-shimmer {
+    background: linear-gradient(110deg, #D4AF37 8%, #FCD34D 18%, #D4AF37 33%);
+    background-size: 200% 100%;
+    animation: 4s shimmer linear infinite;
+}
+
+/* Animation Utilities for Index Page */
+.animate-on-scroll {
+    animation-play-state: paused !important;
+}
+.animate-on-scroll.animate {
+    animation-play-state: running !important;
+}
+
+/* Custom Scrollbar for Form Areas */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.5);
+}
