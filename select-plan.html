@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Plan | Webory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body class="min-h-screen antialiased overflow-x-hidden text-white relative"
+    style="background: linear-gradient(135deg, #0B1C2D 0%, #1a2f45 100%);">
+
+    <!-- Animated Background Orbs -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div
+            class="absolute w-[600px] h-[600px] bg-[#D4AF37]/15 rounded-full blur-[100px] -top-[200px] -left-[100px] animate-pulse">
+        </div>
+        <div class="absolute w-[500px] h-[500px] bg-[#000080]/20 rounded-full blur-[80px] bottom-[10%] -right-[50px]">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="z-50 relative border-b border-white/10 backdrop-blur-md bg-[#0B1C2D]/80">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold tracking-tight hover:opacity-80 transition-opacity">
+                    <span class="text-white">We</span><span class="text-[#000080]">bor</span><span
+                        class="text-[#D4AF37]">y</span>
+                </a>
+                <a href="dashboard.html" class="text-sm text-white/70 hover:text-white transition-colors">← Back to
+                    Dashboard</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 pt-16 pb-20">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8">
+
+            <!-- Page Header -->
+            <div class="text-center mb-12">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#B8860B] flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h1 class="text-4xl font-bold mb-4">Complete Your Order</h1>
+                <p class="text-white/60 text-lg">You're one step away from launching your dream website</p>
+            </div>
+
+            <!-- Order Form Card -->
+            <div class="rounded-2xl p-8 sm:p-10 shadow-2xl"
+                style="background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1);">
+
+                <!-- Plan Summary -->
+                <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10 mb-8">
+                    <div>
+                        <p class="text-sm text-white/50 mb-1">Selected Plan</p>
+                        <p class="text-xl font-bold text-white" id="plan-name">Starter Plan</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-sm text-white/50 mb-1">Total</p>
+                        <p class="text-2xl font-bold text-[#D4AF37]" id="plan-price">$399</p>
+                    </div>
+                </div>
+
+                <form id="orderForm" class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm text-white/70 mb-2">First Name</label>
+                            <input type="text" required placeholder="John"
+                                class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-white/30 focus:bg-white/10 focus:border-[#D4AF37] focus:outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-white/70 mb-2">Last Name</label>
+                            <input type="text" required placeholder="Doe"
+                                class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-white/30 focus:bg-white/10 focus:border-[#D4AF37] focus:outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-white/70 mb-2">Email Address</label>
+                        <input type="email" required placeholder="john@example.com"
+                            class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-white/30 focus:bg-white/10 focus:border-[#D4AF37] focus:outline-none transition-all">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-white/70 mb-2">Company Name (Optional)</label>
+                        <input type="text" placeholder="Your Company"
+                            class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-white/30 focus:bg-white/10 focus:border-[#D4AF37] focus:outline-none transition-all">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-white/70 mb-2">Project Description</label>
+                        <textarea rows="4" required placeholder="Tell us about your project..."
+                            class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-white/30 focus:bg-white/10 focus:border-[#D4AF37] focus:outline-none transition-all resize-none"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-4 rounded-xl font-bold text-white text-lg transition-all hover:scale-[1.01] active:scale-[0.99] shadow-lg mt-4"
+                        style="background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);">
+                        Confirm & Pay
+                    </button>
+                </form>
+
+                <p class="text-center text-xs text-white/40 mt-6">Secure payment powered by Stripe. Your data is
+                    protected.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Get plan from URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan');
+
+        const plans = {
+            starter: { name: 'Starter Plan', price: '$399' },
+            professional: { name: 'Professional Plan', price: '$799' }
+        };
+
+        if (plan && plans[plan]) {
+            document.getElementById('plan-name').textContent = plans[plan].name;
+            document.getElementById('plan-price').textContent = plans[plan].price;
+        }
+
+        document.getElementById('orderForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you! Your order has been received. We will contact you shortly.');
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+
+</html>
