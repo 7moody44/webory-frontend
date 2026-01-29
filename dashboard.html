@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Webory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/auth.js" defer></script>
+    <style>
+        /* Custom Gold Overrides */
+        .text-\[\#D4AF37\] {
+            color: #D4AF37 !important;
+        }
+
+        .bg-\[\#D4AF37\] {
+            background-color: #D4AF37 !important;
+        }
+
+        .border-\[\#D4AF37\] {
+            border-color: #D4AF37 !important;
+        }
+
+        .hover\:bg-\[\#D4AF37\]:hover {
+            background-color: #D4AF37 !important;
+        }
+
+        .hover\:border-\[\#D4AF37\]:hover {
+            border-color: #D4AF37 !important;
+        }
+
+        .group:hover .group-hover\:text-\[\#D4AF37\] {
+            color: #D4AF37 !important;
+        }
+
+        .glass-card {
+            background: rgba(15, 42, 68, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen antialiased text-white bg-[#0B1C2D] relative overflow-x-hidden">
+
+    <!-- Background -->
+    <div class="fixed top-0 w-full -z-10 h-screen bg-[#0B1C2D]">
+        <div
+            class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1e40af]/20 via-[#0B1C2D] to-[#0B1C2D]">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="border-b border-white/10 bg-[#0B1C2D]/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
+            <a href="/"
+                class="text-2xl font-bold tracking-tight text-white hover:text-[#D4AF37] transition-colors group">
+                We<span class="text-[#1D4ED8]">bor</span><span
+                    class="text-[#D4AF37] group-hover:text-white transition-colors">y</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <span id="user-greeting" class="text-sm text-[#CBD5E1] hidden md:block">Welcome, User</span>
+                <button id="logout-btn"
+                    class="text-sm font-medium text-[#CBD5E1] hover:text-white transition-colors border border-white/10 rounded-full px-4 py-2 hover:bg-white/5">
+                    Sign Out
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+        <!-- Welcome Section -->
+        <div class="mb-12 text-center animate-[fadeInUp_0.8s_ease-out_forwards]">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">How can we help you today?</h1>
+            <p class="text-xl text-[#CBD5E1]">Select a service to get started with your project.</p>
+        </div>
+
+        <!-- Service Selection Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-[fadeInUp_1s_ease-out_0.2s_forwards]">
+
+            <!-- Option 1: Create Website -->
+            <div
+                class="glass-card rounded-2xl p-8 hover:border-[#D4AF37] transition-all duration-300 group cursor-pointer hover:-translate-y-1">
+                <div
+                    class="w-12 h-12 rounded-full bg-[#D4AF37]/10 flex items-center justify-center mb-6 group-hover:bg-[#D4AF37] transition-colors">
+                    <svg class="w-6 h-6 text-[#D4AF37] group-hover:text-white transition-colors" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Create New Website</h3>
+                <p class="text-[#CBD5E1] text-sm leading-relaxed mb-6">Build a stunning, high-performance website from
+                    scratch. Custom design tailored to your brand.</p>
+                <div class="flex items-center text-[#D4AF37] font-medium text-sm group-hover:gap-2 transition-all">
+                    View Plans <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Option 2: Fix Website -->
+            <div
+                class="glass-card rounded-2xl p-8 hover:border-[#D4AF37] transition-all duration-300 group cursor-pointer hover:-translate-y-1">
+                <div
+                    class="w-12 h-12 rounded-full bg-[#D4AF37]/10 flex items-center justify-center mb-6 group-hover:bg-[#D4AF37] transition-colors">
+                    <svg class="w-6 h-6 text-[#D4AF37] group-hover:text-white transition-colors" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Fix or Improve Website</h3>
+                <p class="text-[#CBD5E1] text-sm leading-relaxed mb-6">Fix bugs, improve performance, or refresh the
+                    design of your existing site.</p>
+                <div class="flex items-center text-[#D4AF37] font-medium text-sm group-hover:gap-2 transition-all">
+                    Request Fix <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Option 3: Endpoints/Features -->
+            <div
+                class="glass-card rounded-2xl p-8 hover:border-[#D4AF37] transition-all duration-300 group cursor-pointer hover:-translate-y-1">
+                <div
+                    class="w-12 h-12 rounded-full bg-[#D4AF37]/10 flex items-center justify-center mb-6 group-hover:bg-[#D4AF37] transition-colors">
+                    <svg class="w-6 h-6 text-[#D4AF37] group-hover:text-white transition-colors" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Add Features & Endpoints</h3>
+                <p class="text-[#CBD5E1] text-sm leading-relaxed mb-6">Add specific subdomains, API endpoints, payment
+                    gateways, or custom logic.</p>
+                <div class="flex items-center text-[#D4AF37] font-medium text-sm group-hover:gap-2 transition-all">
+                    Configure <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Option 4: Auth Setup -->
+            <div
+                class="glass-card rounded-2xl p-8 hover:border-[#D4AF37] transition-all duration-300 group cursor-pointer hover:-translate-y-1">
+                <div
+                    class="w-12 h-12 rounded-full bg-[#D4AF37]/10 flex items-center justify-center mb-6 group-hover:bg-[#D4AF37] transition-colors">
+                    <svg class="w-6 h-6 text-[#D4AF37] group-hover:text-white transition-colors" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Secure Auth & Login Pages</h3>
+                <p class="text-[#CBD5E1] text-sm leading-relaxed mb-6">Implement professional login/signup flows with
+                    2FA, OAuth (Google/GitHub), and security.</p>
+                <div class="flex items-center text-[#D4AF37] font-medium text-sm group-hover:gap-2 transition-all">
+                    Secure Now <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Option 5: Full Consultation -->
+            <div
+                class="glass-card rounded-2xl p-8 hover:border-[#D4AF37] transition-all duration-300 group cursor-pointer hover:-translate-y-1 md:col-span-2 lg:col-span-2 bg-gradient-to-r from-[#0F2A44] to-[#1e40af]/20">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <div
+                            class="w-12 h-12 rounded-full bg-[#D4AF37]/10 flex items-center justify-center mb-6 group-hover:bg-[#D4AF37] transition-colors">
+                            <svg class="w-6 h-6 text-[#D4AF37] group-hover:text-white transition-colors" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Custom Project Consultation</h3>
+                        <p class="text-[#CBD5E1] text-sm leading-relaxed mb-6 max-w-md">Need something unique? A SAAS
+                            platform, e-commerce, or complex web app? Let's discuss your vision.</p>
+                    </div>
+                    <div class="hidden md:block">
+                        <div
+                            class="bg-[#D4AF37] text-white px-6 py-3 rounded-full font-medium shadow-lg shadow-[#D4AF37]/20 group-hover:bg-[#B8860B] transition-colors">
+                            Contact Expert
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Use the auth.js logic but check for login immediately
+        // Simple inline check for dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = localStorage.getItem('webory_user');
+            if (!user) {
+                window.location.href = 'login.html'; // Protect route
+            } else {
+                try {
+                    const userData = JSON.parse(user);
+                    document.getElementById('user-greeting').innerText = `Welcome, ${userData.name}`;
+                } catch (e) { }
+            }
+
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                localStorage.removeItem('webory_user');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+
+</html>

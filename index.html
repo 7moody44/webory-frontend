@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' 'unsafe-inline' https:; script-src 'self' 'unsafe-inline' https:; font-src 'self' https: data:; style-src 'self' 'unsafe-inline' https:; img-src 'self' https: data: blob:;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webory | Everything Your Website Needs, All in One Place</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="module" async
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fwebory2853back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.16"></script>
+    <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2"></script>
+    <style>
+        /* Custom Gold Overrides for when tailwind build is not run */
+        .from-\[\#D4AF37\] {
+            --tw-gradient-from: #D4AF37 !important;
+            --tw-gradient-to: rgb(212 175 55 / 0) !important;
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+        }
+
+        .to-\[\#B8860B\] {
+            --tw-gradient-to: #B8860B !important;
+        }
+
+        .bg-\[\#D4AF37\] {
+            background-color: #D4AF37 !important;
+        }
+
+        .text-\[\#D4AF37\] {
+            color: #D4AF37 !important;
+        }
+
+        .hover\:bg-\[\#B8860B\]:hover {
+            background-color: #B8860B !important;
+        }
+
+        .hover\:text-\[\#D4AF37\]:hover {
+            color: #D4AF37 !important;
+        }
+
+        .bg-\[\#D4AF37\]\/10 {
+            background-color: rgba(212, 175, 55, 0.1) !important;
+        }
+
+        .sha w-\[\#D4AF37\]\/20 {
+            --tw-shadow-color: rgba(212, 175, 55, 0.2) !important;
+            --tw-shadow: var(--tw-shadow-colored) !important;
+        }
+
+        .hover\:shadow-\[0_20px_50px_rgba\(212\,175\,55\,0\.15\)\]:hover {
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15) !important;
+        }
+
+        .text-\[\#1D4ED8\] {
+            color: #1D4ED8 !important;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen antialiased overflow-x-hidden text-white bg-[#0B1C2D]">
+
+    <!-- Background Image -->
+    <div class="fixed top-0 w-full -z-10 h-screen bg-[#0B1C2D]">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+            style="background-image: url('public/background.jpg');">
+        </div>
+        <!-- Gradient Overlay to ensure text readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0B1C2D]/50 via-transparent to-[#0B1C2D]"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="z-50 relative"
+        style="background-image: linear-gradient(to bottom, rgba(11, 28, 45, 0.8), transparent);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex pt-6 pb-6 items-center justify-between">
+                <a href="/"
+                    class="text-2xl font-bold tracking-tight text-white hover:text-[#D4AF37] transition-colors group">
+                    We<span class="text-[#1D4ED8]">bor</span><span
+                        class="text-[#D4AF37] group-hover:text-white transition-colors">y</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#services"
+                        class="text-sm font-normal text-[#CBD5E1] hover:text-white transition-colors">Services</a>
+                    <a href="#how-it-works"
+                        class="text-sm font-normal text-[#CBD5E1] hover:text-white transition-colors">Process</a>
+                    <a href="#testimonials"
+                        class="text-sm font-normal text-[#CBD5E1] hover:text-white transition-colors">Reviews</a>
+                    <a href="login.html"
+                        class="text-sm font-normal text-[#CBD5E1] hover:text-white transition-colors">Login</a>
+                    <button onclick="window.location.href='signup.html'"
+                        class="inline-flex items-center gap-2 bg-[#D4AF37] text-white text-sm font-medium rounded-full px-6 py-2.5 hover:bg-[#B8860B] transition-all hover:scale-105 active:scale-95">
+                        Get Started
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button"
+                    class="lg:hidden inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/10 rounded-full px-4 py-2 text-sm font-normal text-white hover:bg-white/15 transition-colors">
+                    <svg id="menu-icon" class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="close-icon" class="w-4 h-4 hidden" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <span id="menu-text">Menu</span>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu"
+                class="lg:hidden fixed inset-0 bg-[#0B1C2D]/95 backdrop-blur-xl z-50 opacity-0 invisible transition-all duration-300">
+                <div class="flex flex-col h-full pt-6 pb-8 px-6">
+                    <div class="flex justify-end mb-8">
+                        <button id="mobile-close-button"
+                            class="inline-flex items-center justify-center bg-white/10 backdrop-blur border border-white/10 rounded-full p-3 text-white hover:bg-white/15 transition-colors">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <nav class="flex-1">
+                        <div class="space-y-6">
+                            <a href="#services"
+                                class="block text-2xl font-normal text-[#CBD5E1] hover:text-white transition-colors">Services</a>
+                            <a href="#why-choose"
+                                class="block text-2xl font-normal text-[#CBD5E1] hover:text-white transition-colors">Why
+                                Us</a>
+                            <a href="#how-it-works"
+                                class="block text-2xl font-normal text-[#CBD5E1] hover:text-white transition-colors">Process</a>
+                            <a href="#testimonials"
+                                class="block text-2xl font-normal text-[#CBD5E1] hover:text-white transition-colors">Reviews</a>
+                        </div>
+                        <div class="mt-12 pt-8 border-t border-white/10">
+                            <button onclick="window.location.href='#contact'"
+                                class="w-full inline-flex items-center justify-center gap-2 bg-[#D4AF37] text-white text-base font-medium rounded-full px-6 py-3 hover:bg-[#B8860B] transition-all">
+                                Get a Quote
+                            </button>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="flex min-h-[90vh] z-20 relative items-end">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-0 pb-20">
+                <div
+                    class="flex flex-col items-center text-center opacity-0 animate-[fadeInUp_1s_ease-out_0.2s_forwards]">
+                    <!-- Heading -->
+                    <div class="max-w-5xl mx-auto opacity-0 animate-[slideInBlur_1.2s_ease-out_0.4s_forwards]"
+                        style="transform: translateY(30px); filter: blur(10px);">
+                        <h1 class="text-6xl sm:text-7xl lg:text-8xl leading-[0.9] font-bold tracking-tighter">
+                            Everything Your Website Needs, All in One Place
+                        </h1>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="mt-12 max-w-2xl mx-auto">
+                        <div class="flex items-center justify-center gap-3 text-xs text-[#CBD5E1] mb-6 opacity-0 animate-[fadeInSlide_0.8s_ease-out_0.6s_forwards]"
+                            style="transform: translateX(20px);">
+                            <div
+                                class="flex items-center gap-1.5 rounded-full bg-white/10 border border-white/10 backdrop-blur px-3 py-1">
+                                <svg class="w-3.5 h-3.5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span class="font-medium text-white">Trusted by 500+ businesses</span>
+                            </div>
+                        </div>
+
+                        <p class="text-lg sm:text-xl text-[#CBD5E1] leading-relaxed mb-8 opacity-0 animate-[fadeInUp_0.8s_ease-out_0.8s_forwards]"
+                            style="transform: translateY(20px); filter: blur(5px);">
+                            Build, fix, and improve your website with reliable experts — without the stress. From
+                            creation to maintenance, we handle everything.
+                        </p>
+
+                        <div class="border-t border-white/10 pt-6 mb-6 opacity-0 animate-[fadeInScale_0.8s_ease-out_1s_forwards]"
+                            style="transform: scale(0.95); filter: blur(3px);">
+                            <div class="flex flex-wrap justify-center items-center gap-4">
+                                <div class="relative inline-block group rounded-full">
+                                    <button onclick="window.location.href='signup.html'"
+                                        class="z-10 overflow-hidden transition-transform duration-150 active:scale-95 bg-[#D4AF37] text-white rounded-full px-8 py-3 relative shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] cursor-pointer font-medium hover:bg-[#B8860B]">
+                                        <span class="inline-flex items-center gap-2 z-10 relative">
+                                            Get Started Today
+                                            <svg class="h-5 w-5 transition-transform duration-200 group-hover:translate-x-0.5"
+                                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M5 12h14M13 5l7 7-7 7" />
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </div>
+
+                                <div class="w-px h-6 bg-white/20"></div>
+
+                                <button onclick="window.location.href='#how-it-works'"
+                                    class="inline-flex items-center gap-2 text-base font-normal text-[#CBD5E1] border border-white/10 rounded-full px-5 py-2.5 backdrop-blur hover:bg-white/10 transition-colors">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M5 5a2 2 0 013.008-1.728l11.997 6.998a2 2 0 01.003 3.458l-12 7A2 2 0 015 19z" />
+                                    </svg>
+                                    See How It Works
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-white/10 pt-4 opacity-0 animate-[fadeInUp_0.6s_ease-out_1.6s_forwards]"
+                            style="transform: translateY(15px); filter: blur(2px);">
+                            <p class="text-sm text-[#CBD5E1]/70">
+                                Get a custom quote in 24 hours. No commitment required.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="z-20 border-t border-white/10 relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-16">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span
+                        class="inline-flex items-center gap-2 text-[11px] uppercase text-[#CBD5E1] tracking-widest bg-white/5 border border-white/10 rounded-full px-3 py-1 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.1s both;">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <path d="M3 9h18M9 21V9" />
+                        </svg>
+                        Our Services
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight mt-4 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.2s both;">
+                        Everything You Need, One Platform
+                    </h2>
+                    <p class="text-[#CBD5E1] leading-relaxed mt-3 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.3s both;">
+                        From building new sites to fixing broken ones, we provide comprehensive website services
+                        tailored to your business needs.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 animate-on-scroll"
+                    style="animation: fadeSlideIn 1s ease-out 0.4s both;">
+                    <!-- Service Card 1 -->
+                    <div
+                        class="group bg-[#0F2A44] border border-white/10 rounded-2xl p-6 backdrop-blur hover:bg-[#0F2A44]/80 hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(212,175,55,0.15)] transition-all duration-300">
+                        <div
+                            class="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-[#D4AF37]/10 mb-4">
+                            <svg class="w-6 h-6 text-[#D4AF37]" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold tracking-tight mb-2">Website Creation</h3>
+                        <p class="text-sm text-[#CBD5E1] leading-relaxed">
+                            Custom websites built from scratch to match your brand and business goals perfectly.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div
+                        class="group bg-[#0F2A44] border border-white/10 rounded-2xl p-6 backdrop-blur hover:bg-[#0F2A44]/80 hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(212,175,55,0.15)] transition-all duration-300">
+                        <div
+                            class="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-[#D4AF37]/10 mb-4">
+                            <svg class="w-6 h-6 text-[#D4AF37]" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold tracking-tight mb-2">Fix & Optimize</h3>
+                        <p class="text-sm text-[#CBD5E1] leading-relaxed">
+                            Repair broken websites, improve speed, and optimize for better performance and SEO.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div
+                        class="group bg-[#0F2A44] border border-white/10 rounded-2xl p-6 backdrop-blur hover:bg-[#0F2A44]/80 hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(212,175,55,0.15)] transition-all duration-300">
+                        <div
+                            class="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-[#D4AF37]/10 mb-4">
+                            <svg class="w-6 h-6 text-[#D4AF37]" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold tracking-tight mb-2">Pages & Subdomains</h3>
+                        <p class="text-sm text-[#CBD5E1] leading-relaxed">
+                            Add new pages, create subdomains, and expand your website as your business grows.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 4 -->
+                    <div
+                        class="group bg-[#0F2A44] border border-white/10 rounded-2xl p-6 backdrop-blur hover:bg-[#0F2A44]/80 hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(212,175,55,0.15)] transition-all duration-300">
+                        <div
+                            class="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-[#D4AF37]/10 mb-4">
+                            <svg class="w-6 h-6 text-[#D4AF37]" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold tracking-tight mb-2">Auth & Forms</h3>
+                        <p class="text-sm text-[#CBD5E1] leading-relaxed">
+                            Implement secure login systems, signup flows, and custom forms for your users.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-8 animate-on-scroll"
+                    style="animation: fadeSlideIn 1s ease-out 0.9s both;">
+                    <button onclick="window.location.href='#contact'"
+                        class="inline-flex items-center gap-2 text-sm font-medium text-[#CBD5E1] border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 transition-colors">
+                        Request Custom Service
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Webory Section -->
+        <section id="why-choose" class="z-20 border-t border-white/10 relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-16">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span
+                        class="inline-flex items-center gap-2 text-[11px] uppercase text-[#CBD5E1] tracking-widest bg-white/5 border border-white/10 rounded-full px-3 py-1 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.1s both;">
+                        <svg class="w-3.5 h-3.5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        Why Choose Us
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight mt-4 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.2s both;">
+                        Built on Trust & Excellence
+                    </h2>
+                    <p class="text-[#CBD5E1] leading-relaxed mt-3 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.3s both;">
+                        We don't just build websites — we build partnerships. Here's why businesses choose Webory.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <!-- Benefit 1 -->
+                    <div class="bg-[#0F2A44] border border-white/10 rounded-2xl p-8 backdrop-blur hover:bg-[#0F2A44]/80 hover:scale-[1.02] transition-all duration-300 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.4s both;">
+                        <div
+                            class="inline-flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-[#D4AF37]/10 mb-6">
+                            <svg class="w-7 h-7 text-[#D4AF37]" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold tracking-tight mb-3">Fast Turnaround</h3>
+                        <p class="text-[#CBD5E1] leading-relaxed">
+                            Most projects delivered within 7-14 days. We respect your time and move quickly without
+                            sacrificing quality.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 2 -->
+                    <div class="bg-[#0F2A44] border border-white/10 rounded-2xl p-8 backdrop-blur hover:bg-[#0F2A44]/80 hover:scale-[1.02] transition-all duration-300 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.5s both;">
+                        <div
+                            class="inline-flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-[#D4AF37]/10 mb-6">
+                            <svg class="w-7 h-7 text-[#D4AF37]" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold tracking-tight mb-3">Expert Team</h3>
+                        <p class="text-[#CBD5E1] leading-relaxed">
+                            Skilled developers and designers with 10+ years combined experience building websites that
+                            convert.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 3 -->
+                    <div class="bg-[#0F2A44] border border-white/10 rounded-2xl p-8 backdrop-blur hover:bg-[#0F2A44]/80 hover:scale-[1.02] transition-all duration-300 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.6s both;">
+                        <div
+                            class="inline-flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-[#D4AF37]/10 mb-6">
+                            <svg class="w-7 h-7 text-[#D4AF37]" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold tracking-tight mb-3">Satisfaction Guaranteed</h3>
+                        <p class="text-[#CBD5E1] leading-relaxed">
+                            Unlimited revisions until you're 100% happy. Your success is our success — we don't stop
+                            until it's perfect.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="z-20 border-t border-white/10 relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-16">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span
+                        class="inline-flex items-center gap-2 text-[11px] uppercase text-[#CBD5E1] tracking-widest bg-white/5 border border-white/10 rounded-full px-3 py-1 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.1s both;">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                        </svg>
+                        Our Process
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight mt-4 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.2s both;">
+                        Simple, Transparent, Effective
+                    </h2>
+                    <p class="text-[#CBD5E1] leading-relaxed mt-3 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.3s both;">
+                        Getting started with Webory is easy. Here's how we turn your vision into reality.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <!-- Step 1 -->
+                    <div class="relative bg-[#0F2A44] border border-white/10 rounded-2xl p-8 backdrop-blur hover:bg-[#0F2A44]/80 transition-all duration-300 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.4s both;">
+                        <div
+                            class="absolute -top-4 left-8 inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8860B] text-white font-bold text-lg shadow-lg">
+                            1
+                        </div>
+                        <h3 class="text-xl font-semibold tracking-tight mt-4 mb-3">Request a Quote</h3>
+                        <p class="text-[#CBD5E1] leading-relaxed">
+                            Fill out our simple form or contact us directly. Tell us about your project, goals, and
+                            timeline. We respond within 24 hours with a custom quote.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative bg-[#0F2A44] border border-white/10 rounded-2xl p-8 backdrop-blur hover:bg-[#0F2A44]/80 transition-all duration-300 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.5s both;">
+                        <div
+                            class="absolute -top-4 left-8 inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8860B] text-white font-bold text-lg shadow-lg">
+                            2
+                        </div>
+                        <h3 class="text-xl font-semibold tracking-tight mt-4 mb-3">We Build It</h3>
+                        <p class="text-[#CBD5E1] leading-relaxed">
+                            Our expert team gets to work immediately. We keep you updated throughout the process and
+                            incorporate your feedback at every stage.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative bg-[#0F2A44] border border-white/10 rounded-2xl p-8 backdrop-blur hover:bg-[#0F2A44]/80 transition-all duration-300 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.6s both;">
+                        <div
+                            class="absolute -top-4 left-8 inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8860B] text-white font-bold text-lg shadow-lg">
+                            3
+                        </div>
+                        <h3 class="text-xl font-semibold tracking-tight mt-4 mb-3">You Launch</h3>
+                        <p class="text-[#CBD5E1] leading-relaxed">
+                            After final approval, we deploy your website and provide ongoing support. You focus on your
+                            business — we handle the technical details.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-10 animate-on-scroll"
+                    style="animation: fadeSlideIn 1s ease-out 0.8s both;">
+                    <button onclick="window.location.href='#contact'"
+                        class="inline-flex items-center gap-2 bg-[#D4AF37] text-white text-base font-medium rounded-full px-8 py-3 hover:bg-[#B8860B] transition-all hover:scale-105 active:scale-95">
+                        Start Your Project
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="z-20 border-t border-white/10 relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-16">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span
+                        class="inline-flex items-center gap-2 text-[11px] uppercase text-[#CBD5E1] tracking-widest bg-white/5 border border-white/10 rounded-full px-3 py-1 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.1s both;">
+                        <svg class="w-3.5 h-3.5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        Client Reviews
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight mt-4 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.2s both;">
+                        Trusted by Business Owners
+                    </h2>
+                    <p class="text-[#CBD5E1] leading-relaxed mt-3 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.3s both;">
+                        Don't just take our word for it — hear from real clients who've transformed their online
+                        presence with Webory.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-[#0F2A44] border border-white/10 rounded-2xl p-6 backdrop-blur hover:bg-[#0F2A44]/80 transition-all duration-300 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.4s both;">
+                        <div class="flex items-center gap-1 mb-4">
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                        </div>
+                        <p class="text-[#CBD5E1] leading-relaxed mb-4">
+                            "Webory rebuilt our entire e-commerce site in 10 days. Sales increased 47% in the first
+                            month. Their team is responsive, skilled, and truly cares about results."
+                        </p>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="font-semibold">Sarah Mitchell</p>
+                            <p class="text-sm text-[#CBD5E1]/70">Owner, Mitchell Home Goods</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="bg-[#0F2A44] border border-white/10 rounded-2xl p-6 backdrop-blur hover:bg-[#0F2A44]/80 transition-all duration-300 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.5s both;">
+                        <div class="flex items-center gap-1 mb-4">
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                        </div>
+                        <p class="text-[#CBD5E1] leading-relaxed mb-4">
+                            "Our website was broken for weeks. Webory fixed everything in 3 days and optimized our load
+                            speed from 8 seconds to under 2. Incredible service."
+                        </p>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="font-semibold">Marcus Chen</p>
+                            <p class="text-sm text-[#CBD5E1]/70">Founder, TechFlow Solutions</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="bg-[#0F2A44] border border-white/10 rounded-2xl p-6 backdrop-blur hover:bg-[#0F2A44]/80 transition-all duration-300 animate-on-scroll"
+                        style="animation: fadeSlideIn 1s ease-out 0.6s both;">
+                        <div class="flex items-center gap-1 mb-4">
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                        </div>
+                        <p class="text-[#CBD5E1] leading-relaxed mb-4">
+                            "As a non-technical founder, I was intimidated by the web development process. Webory made
+                            it painless. They explained everything clearly and delivered exactly what I needed."
+                        </p>
+                        <div class="border-t border-white/10 pt-4">
+                            <p class="font-semibold">Jessica Rodriguez</p>
+                            <p class="text-sm text-[#CBD5E1]/70">CEO, Verde Wellness</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section id="contact" class="z-20 border-t border-white/10 relative">
+            <div class="max-w-4xl mx-auto px-6 lg:px-8 pt-20 pb-20 text-center">
+                <div class="animate-on-scroll" style="animation: fadeSlideIn 1s ease-out 0.1s both;">
+                    <h2 class="text-4xl sm:text-6xl font-bold tracking-tight mb-6">
+                        Ready to Transform Your Website?
+                    </h2>
+                    <p class="text-xl text-[#CBD5E1] leading-relaxed mb-8 max-w-2xl mx-auto">
+                        Get a custom quote in 24 hours. No technical knowledge required — we handle everything from
+                        start to finish.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button onclick="window.location.href='mailto:hello@itlobni.com?subject=Website Quote Request'"
+                            class="inline-flex items-center gap-2 bg-[#D4AF37] text-white text-lg font-medium rounded-full px-10 py-4 hover:bg-[#B8860B] transition-all hover:scale-105 active:scale-95 shadow-lg shadow-[#D4AF37]/20">
+                            Get Your Free Quote
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </button>
+                        <a href="mailto:hello@itlobni.com"
+                            class="inline-flex items-center gap-2 text-[#CBD5E1] border border-white/10 rounded-full px-8 py-4 hover:bg-white/10 transition-colors text-lg font-medium">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Email Us
+                        </a>
+                    </div>
+                    <p class="text-sm text-[#CBD5E1]/60 mt-6">
+                        Average response time: Under 12 hours • 500+ satisfied clients
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-20 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-12 pb-12">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-8">
+                    <a href="/"
+                        class="text-xl font-bold tracking-tight text-white hover:text-[#D4AF37] transition-colors group">
+                        We<span class="text-[#1D4ED8]">bor</span><span
+                            class="text-[#D4AF37] group-hover:text-white transition-colors">y</span>
+                    </a>
+                    <div class="hidden md:flex items-center gap-6 text-sm">
+                        <a href="#services" class="text-[#CBD5E1] hover:text-white transition-colors">Services</a>
+                        <a href="#why-choose" class="text-[#CBD5E1] hover:text-white transition-colors">Why Us</a>
+                        <a href="#how-it-works" class="text-[#CBD5E1] hover:text-white transition-colors">Process</a>
+                        <a href="mailto:hello@itlobni.com"
+                            class="text-[#CBD5E1] hover:text-white transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="mailto:hello@itlobni.com"
+                        class="inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/10 text-[#CBD5E1] hover:bg-white/10 hover:text-white transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </a>
+                    <span class="text-sm text-[#CBD5E1]/60">© 2026 Webory. All rights reserved.</span>
+                </div>
+            </div>
+            <div
+                class="border-t border-white/10 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#CBD5E1]/60">
+                <p>Domain: <a href="https://itlobni.com" class="hover:text-white transition-colors">itlobni.com</a></p>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <span class="w-px h-3 bg-white/10"></span>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        (function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileCloseButton = document.getElementById('mobile-close-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            const menuText = document.getElementById('menu-text');
+            let isMenuOpen = false;
+
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove('opacity-0', 'invisible');
+                    mobileMenu.classList.add('opacity-100', 'visible');
+                    menuIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                    menuText.textContent = 'Close';
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenu.classList.remove('opacity-100', 'visible');
+                    mobileMenu.classList.add('opacity-0', 'invisible');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                    menuText.textContent = 'Menu';
+                    document.body.style.overflow = '';
+                }
+            }
+
+            mobileMenuButton.addEventListener('click', toggleMenu);
+            mobileCloseButton.addEventListener('click', toggleMenu);
+
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isMenuOpen) toggleMenu();
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMenuOpen) toggleMenu();
+            });
+
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target === mobileMenu && isMenuOpen) toggleMenu();
+            });
+        })();
+
+        // Intersection Observer for scroll animations
+        (function () {
+            const style = document.createElement('style');
+            style.textContent = `
+                .animate-on-scroll { animation-play-state: paused !important; }
+                .animate-on-scroll.animate { animation-play-state: running !important; }
+            `;
+            document.head.appendChild(style);
+
+            const once = true;
+
+            if (!window.__inViewIO) {
+                window.__inViewIO = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate');
+                            if (once) window.__inViewIO.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+            }
+
+            window.initInViewAnimations = function (selector = '.animate-on-scroll') {
+                document.querySelectorAll(selector).forEach((el) => {
+                    window.__inViewIO.observe(el);
+                });
+            };
+
+            document.addEventListener('DOMContentLoaded', () => initInViewAnimations());
+        })();
+    </script>
+    <script id="dhws-dataInjector" src="/public/dhws-data-injector.js"></script>
+</body>
+
+</html>
