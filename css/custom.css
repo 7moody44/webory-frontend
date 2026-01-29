@@ -43,7 +43,8 @@
 }
 
 .text-\[\#1D4ED8\] {
-    color: #1D4ED8 !important; /* Standard Tailwind Blue override if needed */
+    color: #1D4ED8 !important;
+    /* Standard Tailwind Blue override if needed */
 }
 
 /* =========================================
@@ -91,7 +92,8 @@
 }
 
 .orb-3 {
-    width: 150px; /* Default for Login */
+    width: 150px;
+    /* Default for Login */
     height: 150px;
     background: #ffffff;
     opacity: 0.1;
@@ -111,18 +113,41 @@ body.signup-page .orb-3 {
 }
 
 @keyframes float {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(30px, 50px); }
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(30px, 50px);
+    }
 }
 
 @keyframes pulse-move {
-    0% { transform: translate(0, 0) scale(1); opacity: 0.05; }
-    100% { transform: translate(-50px, 50px) scale(1.5); opacity: 0.15; }
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.05;
+    }
+
+    100% {
+        transform: translate(-50px, 50px) scale(1.5);
+        opacity: 0.15;
+    }
 }
 
 @keyframes pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
-    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.2; }
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.1;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.2;
+    }
 }
 
 /* Glass Card */
@@ -171,13 +196,14 @@ body.signup-page .orb-3 {
     transition: color 0.3s ease;
 }
 
-.input-field:focus + .input-icon {
+.input-field:focus+.input-icon {
     color: #D4AF37;
 }
 
 /* Background Images for Auth Split Layout */
 .split-bg {
-    background-image: url('../public/auth-bg.png'); /* Adjusted path relative to css folder */
+    background-image: url('../public/auth-bg.png');
+    /* Adjusted path relative to css folder */
     background-size: cover;
     background-position: center;
 }
@@ -189,19 +215,24 @@ body.signup-page .orb-3 {
 }
 
 /* Custom Checkbox */
-.custom-checkbox input:checked + div {
+.custom-checkbox input:checked+div {
     background-color: #D4AF37;
     border-color: #D4AF37;
 }
 
-.custom-checkbox input:checked + div svg {
+.custom-checkbox input:checked+div svg {
     display: block;
 }
 
 /* Button Shimmer Effect */
 @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
 }
 
 .btn-shimmer {
@@ -214,6 +245,7 @@ body.signup-page .orb-3 {
 .animate-on-scroll {
     animation-play-state: paused !important;
 }
+
 .animate-on-scroll.animate {
     animation-play-state: running !important;
 }
@@ -222,13 +254,29 @@ body.signup-page .orb-3 {
 .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(212, 175, 55, 0.5);
+}
+
+/* Glass Card for Dashboard */
+.glass-card {
+    background: rgba(15, 42, 68, 0.3);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Improved Input Spacing */
+.input-group+.input-group {
+    margin-top: 1.25rem;
+    /* 20px gap between inputs */
 }

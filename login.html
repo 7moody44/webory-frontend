@@ -13,83 +13,91 @@
     <link rel="stylesheet" href="css/custom.css">
 </head>
 
-<body class="min-h-screen relative overflow-hidden login-page" style="background: #0B1C2D;">
+<body class="min-h-screen relative overflow-hidden"
+    style="background: linear-gradient(135deg, #0B1C2D 0%, #1a2f45 100%);">
 
     <!-- Animated Background Orbs -->
     <div class="orb orb-1" id="orb1"></div>
     <div class="orb orb-2" id="orb2"></div>
     <div class="orb orb-3" id="orb3"></div>
 
-    <!-- Full Background Image -->
-    <div class="fixed inset-0 z-0">
-        <img src="public/auth-bg.png" alt="" class="w-full h-full object-cover opacity-30">
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0B1C2D]/80 via-[#0B1C2D]/60 to-[#0B1C2D]/90"></div>
+    <!-- Subtle Background Pattern -->
+    <div class="fixed inset-0 z-0 opacity-20"
+        style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0); background-size: 40px 40px;">
     </div>
 
-    <!-- Top Left Logo (Bigger & Better Position) -->
+    <!-- Top Left Logo -->
     <a href="/"
-        class="absolute top-10 left-10 z-50 text-5xl font-bold tracking-tight hover:opacity-90 transition-opacity">
+        class="absolute top-8 left-8 z-50 text-4xl font-bold tracking-tight hover:opacity-90 transition-opacity">
         <span class="text-white">We</span><span class="text-[#000080]">bor</span><span class="text-[#D4AF37]">y</span>
     </a>
 
-    <!-- Centered Login Card -->
+    <!-- Centered Compact Login Card -->
     <div class="relative z-10 flex items-center justify-center min-h-screen px-6">
-        <div class="w-full max-w-md glass-panel rounded-3xl p-10 shadow-2xl animate-[fadeInUp_0.8s_ease-out_forwards]">
+        <div class="w-full max-w-md rounded-2xl p-8 sm:p-10 shadow-2xl animate-[fadeInUp_0.7s_ease-out_both]"
+            style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1);">
 
-            <div class="mb-8 text-center">
-                <h2 class="text-4xl font-bold text-white mb-3">Welcome Back</h2>
-                <p class="text-white/60 text-lg">Sign in to access your dashboard</p>
+            <!-- Icon -->
+            <div class="flex justify-center mb-6">
+                <div
+                    class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#B8860B] flex items-center justify-center shadow-lg">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
+                        </path>
+                    </svg>
+                </div>
             </div>
 
-            <form action="#login" id="loginForm" class="flex flex-col gap-5">
-                <div class="input-group">
-                    <input type="email" name="email" id="email" required placeholder="Email Address"
-                        class="input-field placeholder-white/30">
-                    <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                        </path>
-                    </svg>
+            <div class="mb-6 text-center">
+                <h2 class="text-2xl font-bold text-white mb-2">Sign in with email</h2>
+                <p class="text-white/50 text-sm">Welcome back! Please enter your details</p>
+            </div>
+
+            <form action="#login" id="loginForm" class="space-y-4">
+                <!-- Compact Email Input -->
+                <div class="relative">
+                    <div class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <svg class="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <input type="email" name="email" id="email" required placeholder="Email"
+                        class="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-2.5 text-white text-sm placeholder-white/30 focus:bg-white/10 focus:border-[#D4AF37] focus:outline-none transition-all">
                 </div>
 
-                <div class="input-group">
+                <!-- Compact Password Input -->
+                <div class="relative">
+                    <div class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <svg class="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                            </path>
+                        </svg>
+                    </div>
                     <input type="password" name="password" id="password" required placeholder="Password"
-                        class="input-field placeholder-white/30">
-                    <svg class="w-5 h-5 input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
-                        </path>
-                    </svg>
+                        class="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-2.5 text-white text-sm placeholder-white/30 focus:bg-white/10 focus:border-[#D4AF37] focus:outline-none transition-all">
                 </div>
 
-                <div class="flex items-center justify-between mt-2">
-                    <label class="flex items-center cursor-pointer custom-checkbox group relative">
-                        <input type="checkbox" class="sr-only">
-                        <div
-                            class="w-5 h-5 border border-white/20 rounded-md flex items-center justify-center transition-all duration-200 group-hover:border-[#D4AF37]">
-                            <svg class="w-3.5 h-3.5 text-[#0B1C2D] hidden fill-current pointer-events-none"
-                                viewBox="0 0 20 20">
-                                <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                            </svg>
-                        </div>
-                        <span
-                            class="ml-3 text-sm text-white/70 group-hover:text-[#D4AF37] transition-colors select-none">Remember
-                            me</span>
-                    </label>
+                <div class="text-right">
                     <a href="#"
-                        class="text-sm font-medium text-[#D4AF37] hover:text-[#FCD34D] transition-colors forgot-password-link">Forgot
+                        class="text-xs text-[#D4AF37] hover:text-[#FCD34D] transition-colors forgot-password-link">Forgot
                         password?</a>
                 </div>
 
                 <button type="submit"
-                    class="w-full py-4 rounded-xl btn-shimmer text-[#0B1C2D] font-bold text-lg shadow-lg shadow-[#D4AF37]/20 hover:scale-[1.02] transition-transform duration-300 mt-4">
-                    Sign In
+                    class="w-full py-3 rounded-lg font-semibold text-sm text-white transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg"
+                    style="background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);">
+                    Get Started
                 </button>
             </form>
 
-            <div class="mt-8 text-center text-white/50">
+            <div class="mt-6 text-center text-sm text-white/40">
                 Don't have an account?
-                <a href="signup.html" class="font-bold text-[#D4AF37] hover:underline transition-all">Sign up</a>
+                <a href="signup.html" class="text-[#D4AF37] hover:text-[#FCD34D] font-medium transition-colors">Sign
+                    up</a>
             </div>
         </div>
     </div>
